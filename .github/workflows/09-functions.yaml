@@ -15,7 +15,7 @@ jobs:
       - name: I will be skipped
         run: echo "I will print if previous steps succeed."
       - name: I will execute
-        if: ${{ !success() }}
+        if: ${{ failure() }}
         run: echo "I will print if any previous step fails."
       - name: I will execute
         if: ${{ !cancelled() }}
