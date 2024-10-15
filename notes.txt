@@ -1,3 +1,2 @@
 Excercice 06 and 08 go over basically the same mechanism
 Exercice 09 tips sections not complete
-Exercice 10 has step to run if previous steps are failing but never fail those steps to test it
