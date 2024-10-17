@@ -51,3 +51,5 @@ jobs:
         with:
           name: ${{ env.build-artifact-key }}
           path: build
+      - name: Display directory
+        run: ls -R
