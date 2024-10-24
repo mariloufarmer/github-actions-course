@@ -14,11 +14,26 @@ jobs:
         system:
           - ubuntu-latest
           - windows-latest
+        include:
+          - node: 16.x
+            system: ubuntu-latest
+          - node: 21.x
+            system: ubuntu-latest
+            tag: experimental
+      fail-fast: false
+
     name: ${{ matrix.system }}-${{ matrix.node }}
     steps:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          version: ${{ matrix.node }}
+          node-version: ${{ matrix.node }}
+      - name: Fail if experimental
+        if: ${{ matrix.tag == 'experimental' }}
+        run: exit 1
       - name: Perform some tests
-        run: echo "Running tests on OS ${{ matrix.system }} and NodeJS ${{ matrix.node }}"
+        run: |
+          echo "Running tests on OS ${{ matrix.system }} and NodeJS ${{ matrix.node }}"
+          sleep 10
+      - name: Upload test results
+        run: echo "Uploading test results"
